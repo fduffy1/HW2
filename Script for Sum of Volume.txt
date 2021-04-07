@@ -1,0 +1,41 @@
+Sub ticker()
+
+
+    'Set an initial variable for holding the Ticker
+    Dim ticker As String
+    
+    'Set an Initial Variable for holding the total per ticker
+    Dim Ticker_Total As Double
+    Ticker_Total = 0
+    
+    'Keep track of the location for each ticker brand in the summary table
+    Dim Summary_Table_Row As Integer
+    Summary_Table_Row = 2
+    
+    'Loop through all volume
+    For i = 2 To 50640
+    
+    If Cells(i + 1, 1).Value <> Cells(i, 1).Value Then
+    
+        'Set the Ticker name
+        Ticker_Name = Cells(i, 1).Value
+    
+        'Add to the Ticker total
+        Ticker_Total = Ticker_Total + Cells(i, 7).Value
+    
+        'Print the Ticker in the Summary Table
+        Range("I" & Summary_Table_Row).Value = Ticker_Name
+    
+        'Print the Ticker Amount to the Summary Table
+        Range("L" & Summary_Table_Row).Value = Ticker_Total
+    
+        'Add one to the summary table row
+        Summary_Table_Row = Summary_Table_Row + 1
+     End If
+
+Next i
+    
+    'Reset the Brand Total
+    Brand_Total = 0
+ 
+End Sub
